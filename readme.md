@@ -4,7 +4,7 @@ A golang application to study memory, parallelism and concurrency.
 
 ## Objective
 
-The objective of this project is to create a video encoder that process several videos at same time. For this, we are going to work with goroutines and channels.
+The objective of this project is to create a video encoder that process several videos at same time. For this, we are going to work with goroutines and channels. The encoder will convert video from MP4 to MPEG-DASH
 
 ## Memory
 
@@ -60,3 +60,16 @@ Amount of cores your program can use.
 
 Sometimes goroutines need to share a resource. This is done through channels. A routine sends a message through a channel, another routine emptys the channel and uses the data. When first routine won't write data in the channel anymore, it can close the channel.
 
+## Service Architecture
+
+### Success
+
+![Success](img/architecture.png)
+
+### Failure
+
+![Failure](img/arch-failure.png)
+
+### Software Arch
+
+![Software Arch](img/software-arch.png)
