@@ -60,6 +60,16 @@ Amount of cores your program can use.
 
 Sometimes goroutines need to share a resource. This is done through channels. A routine sends a message through a channel, another routine emptys the channel and uses the data. When first routine won't write data in the channel anymore, it can close the channel.
 
+## Go Mod
+
+Gerenciador de pacotes. Comandos:
+
+go mod init video-encoder -> gera arquivo go.mod
+
+to add a new dependency, you just need to import it
+
+go run -> before running, all dependencies will be downloaded
+
 ## Service Architecture
 
 ### Success
