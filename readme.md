@@ -68,7 +68,7 @@ go mod init video-encoder -> gera arquivo go.mod
 
 to add a new dependency, you just need to import it
 
-go run -> before running, all dependencies will be downloaded
+go mod tidy -> before running, all dependencies will be downloaded
 
 ## Service Architecture
 
