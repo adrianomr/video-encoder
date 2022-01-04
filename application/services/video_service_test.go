@@ -44,7 +44,11 @@ func TestDownload(t *testing.T) {
 	videoService.Video = &video
 	videoService.VideoRepository = repo
 
-	download := videoService.Download("codeeducationtest")
+	download := videoService.Download("codeeducationtest-amr")
 
 	require.Nil(t, download)
+
+	err := videoService.Fragment()
+
+	require.Nil(t, err)
 }

@@ -83,3 +83,19 @@ go mod tidy -> before running, all dependencies will be downloaded
 ### Software Arch
 
 ![Software Arch](img/software-arch.png)
+
+## Problem resolution
+
+### Not able to ping google inside container
+
+Hardcode DNS server in docker daemon.json
+
+Edit /etc/docker/daemon.json
+
+{
+    "dns": ["10.1.2.3", "8.8.8.8"]
+}
+Restart the docker daemon for those changes to take effect:
+sudo systemctl restart docker
+
+Now when you run/start a container, docker will populate /etc/resolv.conf with the values from daemon.json.
