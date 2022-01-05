@@ -46,9 +46,25 @@ func TestDownload(t *testing.T) {
 
 	download := videoService.Download("codeeducationtest-amr")
 
+	log.Printf("Error: %v", download)
+
 	require.Nil(t, download)
 
 	err := videoService.Fragment()
+
+	log.Printf("Error: %v", err)
+
+	require.Nil(t, err)
+
+	err = videoService.Encode()
+
+	log.Printf("Error: %v", err)
+
+	require.Nil(t, err)
+
+	err = videoService.Finish()
+
+	log.Printf("Error: %v", err)
 
 	require.Nil(t, err)
 }
