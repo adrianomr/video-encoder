@@ -58,7 +58,7 @@ Amount of cores your program can use.
 
 ## Go routines
 
-Sometimes goroutines need to share a resource. This is done through channels. A routine sends a message through a channel, another routine emptys the channel and uses the data. When first routine won't write data in the channel anymore, it can close the channel.
+Sometimes goroutines need to share a resource. This is done through channels. A routine sends a message through a channel, another routine emptys the channel and uses the data. When first routine won't write data in the channel anymore, it can close the channel. Data can only be writen in the channel when the channel is empty. Otherwise, the writer func will be locked awaiting the channel to be read.
 
 ## Go Mod
 
