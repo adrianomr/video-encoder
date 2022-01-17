@@ -73,7 +73,9 @@ go mod tidy -> before running, all dependencies will be downloaded
 ## Go Race
 
 Go has a flag that allows the go runtime to detect race conditions. 
+
 To use it, run your application with the flag: -race
+
 With this flag go runtime will show warnings into application log with the taga 'WARNING: DATA RACE'
 whenever it finds a race condition problem
 
@@ -90,6 +92,49 @@ whenever it finds a race condition problem
 ### Software Arch
 
 ![Software Arch](img/software-arch.png)
+
+### Running project
+
+To run this project you need to create a bucket into GCP (Google Cloud Plataform) and a service account with access to that bucket.
+
+#### GCP
+
+The GCP config is into 'bucket-credential.json' in the root dir. You have to change this, and add your own config.
+
+#### Enviroment variables
+
+The variables are into the file '.env' in the project root dir.
+
+You have to change this variables to set up your buckets
+
+inputBucketName=codeeducationtest-amr
+outputBucketName=codeeducationtest-amr
+
+#### Local Test
+To test locally you have to upload a video into your bucket
+
+You have to run docker-compose up
+
+Access rabbitMQ into http://localhost:15672/
+
+Create an Exchange with type fanout and name 'dlx'
+
+Create two queues, one with name 'videos-failed' and other with 'videos-result'
+
+Associate the dlx with the videos-failed queue
+
+Access the docker container
+
+Run the following command: go run framework/cmd/server/server.go or go run -race framework/cmd/server/server.go (verify race conditions)
+
+Send a message to videos queue through rabbitMQ web interface following this format:
+
+''''
+{
+  "resource_id": "id-client-1",
+  "file_path": "teste.mp4"
+}
+''''
 
 ## Problem resolution
 
