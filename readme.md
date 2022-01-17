@@ -129,12 +129,12 @@ Run the following command: go run framework/cmd/server/server.go or go run -race
 
 Send a message to videos queue through rabbitMQ web interface following this format:
 
-''''
+```
 {
   "resource_id": "id-client-1",
   "file_path": "teste.mp4"
 }
-''''
+```
 
 ## Problem resolution
 
