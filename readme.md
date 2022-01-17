@@ -125,7 +125,17 @@ Associate the dlx with the videos-failed queue
 
 Access the docker container
 
-Run the following command: go run framework/cmd/server/server.go or go run -race framework/cmd/server/server.go (verify race conditions)
+Run the following command: 
+
+```
+go run framework/cmd/server/server.go 
+```
+
+or 
+
+```
+go run -race framework/cmd/server/server.go (verify race conditions)
+```
 
 Send a message to videos queue through rabbitMQ web interface following this format:
 
