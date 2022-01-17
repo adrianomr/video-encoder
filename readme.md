@@ -70,6 +70,13 @@ to add a new dependency, you just need to import it
 
 go mod tidy -> before running, all dependencies will be downloaded
 
+## Go Race
+
+Go has a flag that allows the go runtime to detect race conditions. 
+To use it, run your application with the flag: -race
+With this flag go runtime will show warnings into application log with the taga 'WARNING: DATA RACE'
+whenever it finds a race condition problem
+
 ## Service Architecture
 
 ### Success
