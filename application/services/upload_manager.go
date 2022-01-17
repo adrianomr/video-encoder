@@ -98,7 +98,7 @@ func (vu *VideoUpload) ProcessUpload(concurrency int, doneUpload chan string) er
 
 	for r := range returnChannel {
 		log.Printf("Return channel received data: %v", r)
-		if r != ""{
+		if r != "" {
 			doneUpload <- r
 			break
 		}

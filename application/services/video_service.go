@@ -89,7 +89,7 @@ func (v *VideoService) Fragment() error {
 	return nil
 }
 
-func (v *VideoService) Encode() error{
+func (v *VideoService) Encode() error {
 	cmdArgs := []string{}
 	cmdArgs = append(cmdArgs, os.Getenv("localStoragePath")+"/"+v.Video.ID+".frag")
 	cmdArgs = append(cmdArgs, "--use-segment-timeline")
@@ -111,23 +111,31 @@ func (v *VideoService) Encode() error{
 }
 
 func (v *VideoService) Finish() error {
-	err := os.Remove(os.Getenv("localStoragePath")+"/"+v.Video.ID+".mp4")
-	if err != nil{
+	err := os.Remove(os.Getenv("localStoragePath") + "/" + v.Video.ID + ".mp4")
+	if err != nil {
 		log.Println("Error removing mp4 ", v.Video.ID, ".mp4")
 		return err
 	}
-	err = os.Remove(os.Getenv("localStoragePath")+"/"+v.Video.ID+".frag")
-	if err != nil{
+	err = os.Remove(os.Getenv("localStoragePath") + "/" + v.Video.ID + ".frag")
+	if err != nil {
 		log.Println("Error removing frag ", v.Video.ID, ".frag")
 		return err
 	}
-	err = os.RemoveAll(os.Getenv("localStoragePath")+"/"+v.Video.ID)
-	if err != nil{
+	err = os.RemoveAll(os.Getenv("localStoragePath") + "/" + v.Video.ID)
+	if err != nil {
 		log.Println("Error removing path ", v.Video.ID)
 		return err
 	}
 
 	log.Println("All files removed for video ", v.Video.ID)
+	return nil
+}
+
+func (v *VideoService) InsertVideo() error {
+	_, err := v.VideoRepository.Insert(v.Video)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
